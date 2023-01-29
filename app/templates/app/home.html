@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show data </title>
+</head>
+<body>
+    <center>
+        <table border="1px" style="margin-top: 50px;">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>First name </td>
+                    <td>Last name</td>
+                    <td>Email</td>
+                    <td>Password</td>
+                    <td>Edit</td>
+                    <td>Delete</td>
+                </tr>
+            </thead>
+            <tbody>
+            {% if msg %}
+                {% for i in msg %}
+                <tr>
+                    <td>{{i.id}}</td>
+                    <td>{{i.fname}}</td>
+                    <td>{{i.lname}}</td>
+                    <td>{{i.email}}</td>
+                    <td>{{i.password    }}</td>
+                    <td>
+                        <form action="{% url 'get_data' pk=i.id  %}" method="POST">
+                            {% csrf_token %}
+                            <input type="Submit" value="Edit" name="" id="">
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{% url 'delete_data' pk=i.id %}" method="POST">
+                            {% csrf_token %}
+                            <input type="Submit" value="Delete" id="">
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% endif %}
+            </tbody>
+        </table>
+    </center>
+</body>
+</html>

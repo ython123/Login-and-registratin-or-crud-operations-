@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="{% static '/css/login.css' %}">
+</head>
+<body>
+    <div class="main">
+        <h4 style="color: red; text-align: center;">{{msg}}</h4>
+        <h2> Login form</h2>
+        <form action="{% url 'login_logic' %}" method="post" >
+        {% csrf_token %}
+     
+        <div class="input-box">
+            <input type="email" name="email" placeholder="Enter the email" id="">
+        </div>
+
+        <div class="input-box">
+            <input type="password" name="pass" placeholder="Enter the password " id="">
+        </div>
+
+       
+        <div class="button">
+            <input type="submit" value="Login" id="">
+
+        </div>
+
+        <div class="text">
+            <h3> Don't have an account ? <a href="{% url 'signup_page' %}">Signup now</a> </h3>
+        </div>
+
+    </form>
+    </div>
+    
+</body>
+</html>

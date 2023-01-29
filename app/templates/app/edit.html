@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit Form</title>
+    <link rel="stylesheet" href="{% static '/css/edit.css' %}">
+</head>
+<body>
+    <div class="main">
+        <h2> Update form</h2>
+        {% if msg %}
+        <form action="{% url 'update_logic' pk=msg.id %}" method="post" >
+        {% csrf_token %}
+        <div class="input-box">
+            <input type="text" name="fname" placeholder="Enter the first name" value="{{msg.fname}}" id="">
+        </div>
+
+        <div class="input-box">
+            <input type="text" name="lname" placeholder="Enter the Last name " value="{{msg.lname}}" id="">
+        </div>
+
+        <div class="input-box">
+            <input type="email" name="email" placeholder="Enter the email" value="{{msg.email}}" id="">
+        </div>
+
+        <div class="input-box">
+            <input type="text" name="pass" placeholder="Enter the password " value="{{msg.password}}" id="">
+        </div>
+
+        <div class="button">
+            <input type="submit" value="Update" name="" id="">
+
+        </div>
+
+        <div class="text">
+            <h3> Go to home page ? <a href="{% url 'user_data' %}">Click now</a> </h3>
+        </div>
+
+    </form>
+    {% endif %}
+    </div>
+    
+</body>
+</html>
